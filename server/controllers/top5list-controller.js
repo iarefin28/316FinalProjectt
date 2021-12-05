@@ -122,10 +122,13 @@ getTop5ListPairs = async (req, res) => {
                     // PUT ALL THE LISTS INTO ID, NAME PAIRS
                     let pairs = [];
                     for (let key in top5Lists) {
+                        //console.log(top5Lists)
+                        //console.log("hi")
                         let list = top5Lists[key];
                         let pair = {
                             _id: list._id,
-                            name: list.name
+                            name: list.name,
+                            ownerUserName: list.ownerUserName
                         };
                         pairs.push(pair);
                     }

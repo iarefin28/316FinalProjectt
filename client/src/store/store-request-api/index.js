@@ -22,12 +22,13 @@ const api = axios.create({
 // WORK, AND SOME REQUIRE DATA, WHICH WE WE WILL FORMAT HERE, FOR WHEN
 // WE NEED TO PUT THINGS INTO THE DATABASE OR IF WE HAVE SOME
 // CUSTOM FILTERS FOR QUERIES
-export const createTop5List = (newListName, newItems, userEmail) => {
+export const createTop5List = (newListName, newItems, userEmail, userFirstName, userLastName) => {
     return api.post(`/top5list/`, {
         // SPECIFY THE PAYLOAD
         name: newListName,
         items: newItems,
-        ownerEmail: userEmail
+        ownerEmail: userEmail,
+        ownerUserName: userFirstName + " " + userLastName
     })
 }
 export const deleteTop5ListById = (id) => api.delete(`/top5list/${id}`)

@@ -30,6 +30,7 @@ export default function SplashScreen() {
 
     const handleGuestScreen = (event) => {
         event.preventDefault();
+        window.location.href="http://localhost:3000/community/";
     };
     
 

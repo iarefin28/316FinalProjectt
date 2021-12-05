@@ -209,11 +209,13 @@ function GlobalStoreContextProvider(props) {
     // THIS FUNCTION CREATES A NEW LIST
     store.createNewList = async function () {
         let newListName = "Untitled" + store.newListCounter;
-        const response = await api.createTop5List(newListName, ["?", "?", "?", "?", "?"], auth.user.email);
+        const response = await api.createTop5List(newListName, ["?", "?", "?", "?", "?"], auth.user.email, auth.user.firstName, auth.user.lastName);
+        console.log(response.data.top5List)
         console.log("createNewList response: " + response);
         if (response.status === 201) {
             tps.clearAllTransactions();
             let newList = response.data.top5List;
+            //console.log(response.data.top5List.ownerUserName);
             storeReducer({
                 type: GlobalStoreActionType.CREATE_NEW_LIST,
                 payload: newList
@@ -367,6 +369,14 @@ function GlobalStoreContextProvider(props) {
     store.setIsListNameEditActive = function () {
         storeReducer({
             type: GlobalStoreActionType.SET_LIST_NAME_EDIT_ACTIVE,
+            payload: null
+        });
+    }
+
+    //THIS FUNCTION ENABLES THE PROCESS OF OPENING A LIST 
+    store.setIsExpandActive = function () {
+        storeReducer({
+            type: GlobalStoreActionType.SET_EXPAND_ACTIVE,
             payload: null
         });
     }

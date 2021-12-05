@@ -47,8 +47,9 @@ const HomeScreen = () => {
     }
     let listCard = "";
     if (store) {
+        console.log(store.idNamePairs)
         listCard = 
-            <List sx={{ width: '90%', left: '5%', bgcolor: 'background.paper' }}>
+            <List sx={{ width: '90%', left: '5%', bgcolor: 'lightgray' }}>
             {
                 store.idNamePairs.map((pair) => (
                     <ListCard
@@ -91,9 +92,9 @@ const HomeScreen = () => {
                     </Toolbar>
                 </AppBar>
             </div>
-            <div id="list-selector-list">
+            <div id="list-selector-list" >
                 {
-                    listCard
+                        listCard
                 }
                 <MUIDeleteModal />
             </div>
